@@ -1,5 +1,11 @@
-@charset "UTF-8";
-:root {
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>P3tech 機能紹介サイト</title>
+  <style>
+    :root {
       --bg: #0f172a;
       --panel: rgba(255, 255, 255, 0.08);
       --panel-strong: rgba(255, 255, 255, 0.14);
@@ -1066,3 +1072,287 @@
     .launch-orbit::after {
       box-shadow: 0 0 24px rgba(0,91,172,.55);
     }
+
+  </style>
+<script>
+      function toggleCard(card) {
+        card.classList.toggle('active');
+      }
+    </script>
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <div class="badge"><span class="badge-dot"></span>Team Development Showcase</div>
+      <div class="team-mark"><span class="logo-dot">P3</span><strong>P3tech</strong><span>Power / Passion / Pleasant</span></div>
+      <h1><span class="team-name">P3tech</span>若者向けECサイトを<br><span class="gradient-text">もっと楽しく、便利に。</span></h1>
+      <p class="lead">
+        第一フェーズの基本機能を土台に、セキュリティ・購入体験・ゲーム性・継続利用を高める追加機能を実装しました。
+        機能ごとに「なぜ必要か」「誰にどんな価値を届けるか」を考えながら、チームで形にしました。
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#features">機能カードを見る</a>
+        <a class="btn" href="#summary">まとめを見る</a>
+      </div>
+    </div>
+
+    <div class="hero-card launch-card">
+      <div class="launch-eyebrow">LIVE DEMO</div>
+      <h2 class="launch-title">作成したECサイトを<br><span>実際に開く</span></h2>
+      <a class="site-link" href="http://localhost:55000/shared_shop/" target="_blank" rel="noopener">
+        サイトを開く →
+      </a>
+      <div class="mini-url">http://localhost:55000/shared_shop/</div>
+      <div class="launch-orbit"></div>
+    </div>
+  </div>
+  </header>
+
+  <section class="slogan-section" aria-label="P3tech team slogan">
+    <div class="slogan-board">
+      <div class="slogan-board-head">
+        <div>
+          <h2>P3techのチームスローガン</h2>
+          <p>チーム名に込めた3つの姿勢を、機能づくりとチーム運営の軸にしました。</p>
+        </div>
+        <div class="badge"><span class="badge-dot"></span>Power × Passion × Pleasant</div>
+      </div>
+      <div class="p3-grid">
+        <div class="p3-card" style="--p3-color:#ef4444;">
+          <div class="p3-label"><span></span>Power</div>
+          <small>一人ひとりが担当機能に責任を持ち、チームの力として成果につなげる。</small>
+        </div>
+        <div class="p3-card" style="--p3-color:#f97316;">
+          <div class="p3-label"><span></span>Passion</div>
+          <small>分からない部分も諦めずに調査・相談し、最後まで挑戦し続ける。</small>
+        </div>
+        <div class="p3-card" style="--p3-color:#38bdf8;">
+          <div class="p3-label"><span></span>Pleasant</div>
+          <small>相談しやすく、意見を出しやすい雰囲気を作り、楽しさも大切にする。</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <section id="features">
+      <div class="section-title">
+        <h2>実装機能紹介</h2>
+        <p>P3techとして実装した追加機能を、目的別に見やすく整理しました。カードを押すと機能に込めた思いが開きます。</p>
+      </div>
+      <p class="filter-note">カードをクリックすると、狙い・利用者への価値・チームとしての工夫を確認できます。</p>
+
+      <div class="pickup-title">
+        <span>Pick Up</span>
+        <h3>特にこだわった機能</h3>
+      </div>
+      <div class="pickup-grid">
+
+        <article class="feature-card featured-card" onclick="toggleCard(this)">
+          <div class="featured-ribbon">PICK UP</div>
+          <div class="feature-head">
+            <span class="issue-no">06</span>
+            <span class="feature-icon">🎨</span>
+          </div>
+          <h3>着せ替え機能</h3>
+          <p>購入回数や累計金額に応じて画面テーマを解放。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>ECサイトを単に商品を購入する場にとどめず、利用を重ねるほど楽しさが広がる体験にすることを目的として実装しました。購入回数や累計金額に応じてテーマを解放することで、継続利用への動機付けにつなげています。</span>
+          </div>
+        </article>
+
+        <article class="feature-card featured-card" onclick="toggleCard(this)">
+          <div class="featured-ribbon">PICK UP</div>
+          <div class="feature-head">
+            <span class="issue-no">07</span>
+            <span class="feature-icon">🎰</span>
+          </div>
+          <h3>ガチャでクーポン獲得</h3>
+          <p>ログイン時や注文完了時にランダムでクーポンを獲得。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>ゲーム要素を取り入れ、再訪問や次回購入のきっかけを作ることを目的として実装しました。ランダムでクーポンを獲得できる仕組みにより、継続的な利用を促進する体験を目指しています。</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="normal-title">
+        <span>Other Features</span>
+        <h3>その他の実装機能</h3>
+      </div>
+      <div class="feature-grid normal-grid">
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">01</span>
+            <span class="feature-icon">🔐</span>
+          </div>
+          <h3>アカウントロック機能</h3>
+          <p>ログイン失敗を検知し、不正アクセスからアカウントを守る。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>セキュリティ面の安心感を高めるために実装しました。5回連続でログインに失敗した場合に一定時間ロックすることで、利用者が安心して使えるECサイトを目指しました。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">02</span>
+            <span class="feature-icon">🛡️</span>
+          </div>
+          <h3>権限分離機能</h3>
+          <p>管理者と一般ユーザーを分離し、管理画面へのアクセスを制御。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>管理者と購入者の役割を明確に分けることで、誤操作や不正アクセスを防ぐことを目的にしました。ECサイトとして必要な安全性を意識した機能です。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">03</span>
+            <span class="feature-icon">⭐</span>
+          </div>
+          <h3>レビュー機能</h3>
+          <p>購入者が商品に評価とコメントを投稿できる。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>購入を迷っているユーザーが、実際に買った人の感想を参考にできるようにしました。購入者のみレビュー可能にすることで、信頼性のある情報提供を目指しました。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">04</span>
+            <span class="feature-icon">🎟️</span>
+          </div>
+          <h3>クーポン機能</h3>
+          <p>クーポンコードを入力すると、注文金額から割引を適用。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>お得感を作り、購入のきっかけにつなげるために実装しました。ECサイトらしい販促機能として、ユーザーの購買意欲を高めることを意識しました。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">05</span>
+            <span class="feature-icon">🕘</span>
+          </div>
+          <h3>最近見た商品</h3>
+          <p>閲覧履歴から最新の商品を表示し、再訪問しやすくする。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>一度気になった商品にすぐ戻れるようにすることで、探し直す手間を減らしました。ユーザー目線で使いやすさを高めるための機能です。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">10</span>
+            <span class="feature-icon">💬</span>
+          </div>
+          <h3>スタンプレビュー</h3>
+          <p>文章を書かなくてもスタンプでレビュー投稿できる。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>レビュー投稿のハードルを下げるために実装しました。文章を書くのが面倒なユーザーでも、気軽に商品の感想を残せるようにしています。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">11</span>
+            <span class="feature-icon">🎁</span>
+          </div>
+          <h3>ランダム商品ガチャ</h3>
+          <p>予算やカテゴリに応じてランダムに商品をおすすめ。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>福袋のような偶然の出会いを作るために実装しました。自分では選ばない商品に出会える楽しさを、ECサイトに取り入れています。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">14</span>
+            <span class="feature-icon">⏰</span>
+          </div>
+          <h3>タイムセール機能</h3>
+          <p>時間帯に応じた動的な割引価格適用、全画面通知・専用一覧・購入フローへの統合。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>セールの特別感をサイト全体で感じられるようにした機能です。時間帯に応じて価格が変わる仕組みにより、ユーザーに「今買う楽しさ」を提供し、専用一覧や購入フローへの反映まで含めて、実際のECサイトらしい購買体験を目指しました。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">15</span>
+            <span class="feature-icon">💎</span>
+          </div>
+          <h3>ポイント機能</h3>
+          <p>商品購入の10％をポイントとして付与し、次回以降に利用可能。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>継続的な購入を促進するために実装しました。購入するほどポイントが貯まり、次回の買い物で使える仕組みにすることで、ユーザーにまた利用したいと思ってもらうことを目指しました。</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="section-title">
+        <h2>開発の狙い</h2>
+        <p>単に機能を増やすのではなく、ECサイトとしての価値を高める方向で整理しました。</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-card"><b>安全性</b><p>アカウントロックや権限分離により、安心して利用できる土台を強化。</p></div>
+        <div class="timeline-card"><b>購入判断</b><p>レビューやスタンプ投稿により、ユーザーが納得して購入できる情報を追加。</p></div>
+        <div class="timeline-card"><b>楽しさ</b><p>ガチャ、着せ替えなど若者向けのゲーム要素を導入。</p></div>
+        <div class="timeline-card"><b>継続利用</b><p>ポイント、クーポンで再訪問・再購入の動機を作成。</p></div>
+      </div>
+    </section>
+
+    <section id="summary">
+      <div class="summary-panel single">
+        <div class="panel">
+          <h3>P3techらしさ</h3>
+          <ul>
+            <li><b>Power：</b>担当機能を責任を持って形にする</li>
+            <li><b>Passion：</b>課題が出ても調査・相談しながら解決する</li>
+            <li><b>Pleasant：</b>楽しく使えるサイト、楽しく協力できるチームを目指す</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    P3tech Team Development Exercise / Feature Showcase
+  </footer>
+</body>
+</html>
