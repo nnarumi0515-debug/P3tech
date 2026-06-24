@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>P3tech 機能紹介サイト</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: rgba(255, 255, 255, 0.08);
+      --panel-strong: rgba(255, 255, 255, 0.14);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+      --accent2: #f97316;
+      --accent3: #ef4444;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.25), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(249, 115, 22, 0.22), transparent 24%),
+        radial-gradient(circle at 50% 85%, rgba(168, 85, 247, 0.18), transparent 30%),
+        linear-gradient(135deg, #020617 0%, #0f172a 48%, #111827 100%);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      padding: 48px clamp(20px, 5vw, 80px);
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 48px;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -160px;
+      top: 80px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 0 120px rgba(56, 189, 248, 0.12);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      color: var(--muted);
+      backdrop-filter: blur(10px);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent3), var(--accent2), var(--accent));
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 92px);
+      line-height: 0.96;
+      margin: 26px 0 20px;
+      letter-spacing: -0.07em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #ef4444, #f97316, #38bdf8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      max-width: 740px;
+      color: var(--muted);
+      font-size: clamp(17px, 2.2vw, 22px);
+      line-height: 1.9;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      transition: 0.25s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #ef4444, #f97316, #38bdf8);
+      border: 0;
+      color: white;
+      box-shadow: 0 16px 40px rgba(56, 189, 248, 0.22);
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+
+    .hero-card {
+      position: relative;
+      z-index: 1;
+      padding: 30px;
+      border-radius: 32px;
+      background: linear-gradient(160deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06));
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .score {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .score strong {
+      display: block;
+      font-size: 38px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .score span { color: var(--muted); font-size: 14px; }
+
+    .slogan {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .slogan div {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .slogan b { display: block; font-size: 18px; margin-bottom: 5px; }
+    .slogan small { color: var(--muted); }
+
+    section {
+      padding: 74px clamp(20px, 5vw, 80px);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 52px);
+      margin: 0;
+      letter-spacing: -0.04em;
+    }
+
+    .section-title p {
+      max-width: 660px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .filter-note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card {
+      position: relative;
+      min-height: 260px;
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.055));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.18);
+      overflow: hidden;
+      transition: 0.25s ease;
+    }
+
+    .feature-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -60px -90px auto;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56,189,248,0.24), transparent 65%);
+      pointer-events: none;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      background: var(--panel-strong);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .feature-card details {
+      min-height: 260px;
+      height: 100%;
+    }
+
+    .feature-card summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 22px;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-card summary::-webkit-details-marker { display: none; }
+
+    .feature-head {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .issue-no {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      font-weight: 900;
+      background: linear-gradient(135deg, rgba(239,68,68,0.28), rgba(249,115,22,0.24), rgba(56,189,248,0.22));
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 10px 28px rgba(56,189,248,0.12);
+    }
+
+    .status {
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .done { background: rgba(34, 197, 94, 0.15); color: #86efac; border: 1px solid rgba(34,197,94,0.35); }
+    .merge { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.35); }
+
+    .category {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #bfdbfe;
+      background: rgba(59,130,246,0.14);
+      border: 1px solid rgba(147,197,253,0.18);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0;
+      font-size: 14.5px;
+    }
+
+    .click-hint {
+      margin-top: auto;
+      padding-top: 18px;
+      color: #7dd3fc;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .feature-detail {
+      position: relative;
+      z-index: 2;
+      margin: 0 22px 22px;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(2, 6, 23, 0.48);
+      border: 1px solid rgba(255,255,255,0.12);
+      animation: fadeIn 0.25s ease;
+    }
+
+    .feature-detail b {
+      display: block;
+      color: #f8fafc;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .feature-detail p {
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .highlight {
+      background: linear-gradient(160deg, rgba(56,189,248,0.18), rgba(249,115,22,0.13));
+      border-color: rgba(56,189,248,0.35);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .timeline-card {
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .timeline-card b { display: block; font-size: 20px; margin-bottom: 8px; }
+    .timeline-card p { margin: 0; color: var(--muted); line-height: 1.7; font-size: 14px; }
+
+    .summary-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .panel {
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 { margin-top: 0; font-size: 25px; }
+    .panel ul { padding-left: 20px; color: var(--muted); line-height: 1.9; }
+
+    footer {
+      padding: 36px clamp(20px, 5vw, 80px) 54px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 1180px) {
+      .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 980px) {
+      .hero, .summary-panel { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .timeline { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .feature-grid, .timeline, .score-grid, .slogan { grid-template-columns: 1fr; }
+      .section-title { display: block; }
+      .hero { padding-top: 32px; }
+    }
+
+    /* ===== Enhanced presentation design ===== */
+    .team-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin: 20px 0 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(239,68,68,.22), rgba(249,115,22,.20), rgba(56,189,248,.20));
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 60px rgba(56,189,248,.12);
+      backdrop-filter: blur(14px);
+      width: fit-content;
+    }
+
+    .team-mark .logo-dot {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: white;
+      background: conic-gradient(from 180deg, #ef4444, #f97316, #38bdf8, #ef4444);
+      box-shadow: 0 0 30px rgba(56,189,248,.35);
+    }
+
+    .team-mark strong {
+      font-size: 18px;
+      letter-spacing: .08em;
+    }
+
+    .hero h1 .team-name {
+      display: block;
+      font-size: clamp(70px, 13vw, 152px);
+      line-height: .82;
+      letter-spacing: -.08em;
+      margin: 16px 0 18px;
+      background: linear-gradient(90deg, #fca5a5, #fdba74, #7dd3fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 20px 80px rgba(56,189,248,.20);
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "P3";
+      position: absolute;
+      right: -14px;
+      bottom: -40px;
+      font-size: 148px;
+      font-weight: 900;
+      color: rgba(255,255,255,.05);
+      letter-spacing: -.08em;
+      pointer-events: none;
+    }
+
+    .slogan-section {
+      padding: 20px clamp(20px, 5vw, 80px) 72px;
+      margin-top: -34px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .slogan-board {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: linear-gradient(135deg, rgba(255,255,255,.11), rgba(255,255,255,.05));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .slogan-board-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .slogan-board h2 {
+      margin: 0;
+      font-size: clamp(26px, 3.4vw, 42px);
+    }
+
+    .slogan-board p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .p3-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .p3-card {
+      position: relative;
+      padding: 24px;
+      border-radius: 22px;
+      background: rgba(2,6,23,.48);
+      border: 1px solid rgba(255,255,255,.13);
+      overflow: hidden;
+      min-height: 170px;
+    }
+
+    .p3-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .16;
+      background: radial-gradient(circle at 25% 20%, var(--p3-color), transparent 45%);
+      pointer-events: none;
+    }
+
+    .p3-label {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 24px;
+    }
+
+    .p3-label span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--p3-color);
+      box-shadow: 0 0 22px var(--p3-color);
+    }
+
+    .p3-card small {
+      position: relative;
+      display: block;
+      color: var(--muted);
+      margin-top: 10px;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .feature-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,.25), rgba(56,189,248,.18), rgba(249,115,22,.16));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .feature-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 23px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: inset 0 0 28px rgba(255,255,255,.05);
+    }
+
+    .issue-no {
+      background: linear-gradient(135deg, rgba(56,189,248,.26), rgba(249,115,22,.20));
+      border: 1px solid rgba(255,255,255,.16);
+    }
+
+    .feature-card h3 {
+      letter-spacing: .01em;
+    }
+
+    .feature-detail {
+      background: rgba(2,6,23,.38);
+      border-left: 3px solid rgba(56,189,248,.8);
+    }
+
+    .summary-panel.single {
+      grid-template-columns: 1fr;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 980px) {
+      .p3-grid { grid-template-columns: 1fr; }
+      .slogan-board-head { display: block; }
+    }
+
+
+    .launch-card {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 22px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(56,189,248,.30), transparent 34%),
+        radial-gradient(circle at 84% 22%, rgba(249,115,22,.24), transparent 34%),
+        linear-gradient(145deg, rgba(15,23,42,.82), rgba(2,6,23,.70));
+    }
+
+    .launch-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background:
+        linear-gradient(120deg, transparent, rgba(255,255,255,.16), transparent);
+      transform: translateX(-70%) rotate(12deg);
+      animation: shineMove 5s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shineMove {
+      0%, 45% { transform: translateX(-80%) rotate(12deg); opacity: 0; }
+      55% { opacity: 1; }
+      100% { transform: translateX(80%) rotate(12deg); opacity: 0; }
+    }
+
+    .launch-eyebrow {
+      position: relative;
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.86);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .launch-title {
+      position: relative;
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -.04em;
+    }
+
+    .launch-title span {
+      background: linear-gradient(90deg, #fca5a5, #fdba74, #7dd3fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .launch-text {
+      position: relative;
+      margin: 0;
+      color: rgba(226,232,240,.78);
+      line-height: 1.9;
+      max-width: 520px;
+    }
+
+    .site-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: fit-content;
+      padding: 16px 24px;
+      border-radius: 18px;
+      text-decoration: none;
+      color: #08111f;
+      font-weight: 900;
+      background: linear-gradient(90deg, #fca5a5, #fdba74, #7dd3fc);
+      box-shadow: 0 18px 48px rgba(56,189,248,.22), 0 10px 28px rgba(249,115,22,.18);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .site-link:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 26px 70px rgba(56,189,248,.30), 0 16px 38px rgba(249,115,22,.22);
+    }
+
+    .mini-url {
+      position: relative;
+      color: rgba(226,232,240,.58);
+      font-size: 13px;
+      word-break: break-all;
+    }
+
+    .launch-orbit {
+      position: absolute;
+      right: -44px;
+      bottom: -44px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: inset 0 0 60px rgba(56,189,248,.12);
+    }
+
+    .launch-orbit::before,
+    .launch-orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,.16);
+    }
+
+    .launch-orbit::before {
+      width: 22px;
+      height: 22px;
+      left: 26px;
+      top: 42px;
+      box-shadow: 0 0 28px rgba(125,211,252,.7);
+    }
+
+    .launch-orbit::after {
+      width: 12px;
+      height: 12px;
+      right: 56px;
+      bottom: 36px;
+      box-shadow: 0 0 24px rgba(253,186,116,.8);
+    }
+
+
+    .feature-card.highlight-work {
+      box-shadow:
+        0 24px 70px rgba(249,115,22,.22),
+        0 0 0 1px rgba(253,186,116,.30) inset;
+      transform: translateY(-2px);
+    }
+
+    .feature-card.highlight-work::after {
+      content: "PICK UP";
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      color: #1f1304;
+      background: linear-gradient(90deg, #fca5a5, #fdba74, #fde68a);
+      box-shadow: 0 12px 30px rgba(249,115,22,.24);
+    }
+
+    .feature-card.highlight-work .feature-icon {
+      background: linear-gradient(135deg, rgba(249,115,22,.32), rgba(56,189,248,.20));
+      box-shadow: 0 0 34px rgba(249,115,22,.22), inset 0 0 28px rgba(255,255,255,.06);
+    }
+
+
+    /* ===== Final card behavior and pickup highlight ===== */
+    .feature-card {
+      position: relative;
+    }
+
+    .feature-detail {
+      display: none !important;
+      margin-top: 16px;
+    }
+
+    .feature-card.active .feature-detail {
+      display: block !important;
+    }
+
+    .detail-toggle {
+      margin-top: 14px;
+      padding: 9px 13px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: rgba(226,232,240,.86);
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: .04em;
+      cursor: pointer;
+      pointer-events: none;
+    }
+
+    .feature-card.active .detail-toggle {
+      background: rgba(56,189,248,.18);
+      color: #e0f2fe;
+    }
+
+    .featured-card {
+      grid-column: span 1;
+      border: 1px solid rgba(253,186,116,.55) !important;
+      box-shadow:
+        0 28px 90px rgba(249,115,22,.26),
+        0 0 0 1px rgba(253,186,116,.28) inset,
+        0 0 48px rgba(56,189,248,.12) inset !important;
+      background:
+        radial-gradient(circle at 18% 10%, rgba(253,186,116,.28), transparent 34%),
+        radial-gradient(circle at 95% 0%, rgba(56,189,248,.20), transparent 34%),
+        rgba(15,23,42,.68) !important;
+      transform: translateY(-4px);
+    }
+
+    .featured-card::before {
+      background: linear-gradient(135deg, rgba(253,186,116,.70), rgba(248,113,113,.42), rgba(56,189,248,.35)) !important;
+    }
+
+    .featured-card h3 {
+      color: #fff7ed;
+      text-shadow: 0 0 26px rgba(253,186,116,.18);
+    }
+
+    .featured-card .feature-icon {
+      background: linear-gradient(135deg, rgba(249,115,22,.50), rgba(56,189,248,.28)) !important;
+      border-color: rgba(253,186,116,.42) !important;
+      box-shadow: 0 0 34px rgba(249,115,22,.35), inset 0 0 28px rgba(255,255,255,.08) !important;
+    }
+
+    .featured-card .issue-no {
+      background: linear-gradient(135deg, rgba(249,115,22,.50), rgba(248,113,113,.38)) !important;
+      border-color: rgba(253,186,116,.50) !important;
+      color: #fff7ed;
+    }
+
+    .featured-ribbon {
+      position: absolute;
+      top: 18px;
+      right: -42px;
+      width: 150px;
+      text-align: center;
+      transform: rotate(35deg);
+      padding: 6px 0;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      color: #1f1304;
+      background: linear-gradient(90deg, #fca5a5, #fdba74, #fde68a);
+      box-shadow: 0 10px 30px rgba(249,115,22,.30);
+      z-index: 3;
+    }
+
+    @media (min-width: 980px) {
+      .featured-card {
+        grid-column: span 2;
+      }
+    }
+
+
+    /* ===== Pickup section layout ===== */
+    .pickup-title,
+    .normal-title {
+      margin: 36px 0 16px;
+    }
+
+    .pickup-title span,
+    .normal-title span {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      margin-bottom: 6px;
+    }
+
+    .pickup-title h3,
+    .normal-title h3 {
+      margin: 0;
+      font-size: clamp(22px, 2.6vw, 32px);
+      letter-spacing: -.03em;
+    }
+
+    .pickup-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-bottom: 42px;
+    }
+
+    .pickup-grid .featured-card {
+      grid-column: auto !important;
+      min-height: 315px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .normal-grid {
+      margin-top: 0;
+    }
+
+    @media (max-width: 860px) {
+      .pickup-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    /* ===== PowerPoint blue-white color adjustment ===== */
+    :root {
+      --bg: #f7fbff;
+      --panel: rgba(255, 255, 255, 0.78);
+      --panel-strong: rgba(255, 255, 255, 0.92);
+      --text: #263342;
+      --muted: #5f6f80;
+      --accent: #00c8d7;
+      --accent2: #168ed8;
+      --accent3: #005bac;
+      --success: #0ea5e9;
+      --warning: #0284c7;
+      --shadow: 0 24px 80px rgba(0, 91, 172, 0.16);
+    }
+
+    body {
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 12%, rgba(0, 200, 215, 0.28), transparent 26%),
+        radial-gradient(circle at 88% 8%, rgba(0, 91, 172, 0.22), transparent 25%),
+        linear-gradient(135deg, #e9fbff 0%, #ffffff 42%, #eef6ff 100%);
+    }
+
+    .hero::before {
+      border-color: rgba(0, 91, 172, 0.18);
+      box-shadow: inset 0 0 120px rgba(0, 200, 215, 0.16);
+    }
+
+    .hero-card,
+    .slogan-board,
+    .feature-card,
+    .panel,
+    .timeline-card,
+    .p3-card {
+      background: rgba(255,255,255,0.82) !important;
+      border-color: rgba(0,91,172,0.16) !important;
+      box-shadow: var(--shadow);
+    }
+
+    .gradient-text,
+    .hero h1 .team-name,
+    .launch-title span {
+      background: linear-gradient(90deg, #00c8d7, #168ed8, #005bac);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .btn.primary,
+    .site-link,
+    .team-mark .logo-dot,
+    .featured-ribbon {
+      background: linear-gradient(90deg, #00c8d7, #168ed8, #005bac) !important;
+      color: #ffffff !important;
+    }
+
+    .badge,
+    .launch-eyebrow,
+    .detail-toggle {
+      background: rgba(255,255,255,0.86);
+      border-color: rgba(0,91,172,0.18);
+      color: #32506d;
+    }
+
+    .badge-dot {
+      background: linear-gradient(135deg, #00c8d7, #168ed8, #005bac);
+      box-shadow: 0 0 20px rgba(0, 200, 215, 0.55);
+    }
+
+    .team-mark {
+      background: linear-gradient(90deg, rgba(0,200,215,.18), rgba(22,142,216,.16), rgba(0,91,172,.15));
+      border-color: rgba(0,91,172,.18);
+    }
+
+    .feature-detail {
+      background: rgba(239, 248, 255, 0.86) !important;
+      border-left-color: #168ed8 !important;
+      color: #3b4b5d;
+    }
+
+    .featured-card {
+      border-color: rgba(0,91,172,.34) !important;
+      box-shadow:
+        0 28px 90px rgba(0,91,172,.20),
+        0 0 0 1px rgba(0,200,215,.22) inset !important;
+      background:
+        radial-gradient(circle at 18% 10%, rgba(0,200,215,.22), transparent 34%),
+        radial-gradient(circle at 95% 0%, rgba(0,91,172,.16), transparent 34%),
+        rgba(255,255,255,.92) !important;
+    }
+
+    .featured-card h3 {
+      color: #0b4f8a;
+      text-shadow: none;
+    }
+
+    .featured-card .feature-icon,
+    .featured-card .issue-no,
+    .issue-no {
+      background: linear-gradient(135deg, rgba(0,200,215,.30), rgba(0,91,172,.22)) !important;
+      border-color: rgba(0,91,172,.22) !important;
+      color: #0b4f8a !important;
+    }
+
+    .feature-card::before,
+    .featured-card::before {
+      background: linear-gradient(135deg, rgba(0,200,215,.55), rgba(22,142,216,.36), rgba(0,91,172,.28)) !important;
+    }
+
+    .p3-card::before {
+      opacity: .10;
+    }
+
+    .p3-card small,
+    .lead,
+    .section-title p,
+    .filter-note,
+    .timeline-card p,
+    .panel ul,
+    .mini-url {
+      color: var(--muted) !important;
+    }
+
+    .launch-orbit {
+      border-color: rgba(0,91,172,.16);
+      box-shadow: inset 0 0 60px rgba(0,200,215,.16);
+    }
+
+    .launch-orbit::before {
+      box-shadow: 0 0 28px rgba(0,200,215,.65);
+    }
+
+    .launch-orbit::after {
+      box-shadow: 0 0 24px rgba(0,91,172,.55);
+    }
+
+  </style>
+<script>
+      function toggleCard(card) {
+        card.classList.toggle('active');
+      }
+    </script>
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <div class="badge"><span class="badge-dot"></span>Team Development Showcase</div>
+      <div class="team-mark"><span class="logo-dot">P3</span><strong>P3tech</strong><span>Power / Passion / Pleasant</span></div>
+      <h1><span class="team-name">P3tech</span>若者向けECサイトを<br><span class="gradient-text">もっと楽しく、便利に。</span></h1>
+      <p class="lead">
+        第一フェーズの基本機能を土台に、セキュリティ・購入体験・ゲーム性・継続利用を高める追加機能を実装しました。
+        機能ごとに「なぜ必要か」「誰にどんな価値を届けるか」を考えながら、チームで形にしました。
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#features">機能カードを見る</a>
+        <a class="btn" href="#summary">まとめを見る</a>
+      </div>
+    </div>
+
+    <div class="hero-card launch-card">
+      <div class="launch-eyebrow">LIVE DEMO</div>
+      <h2 class="launch-title">作成したECサイトを<br><span>実際に開く</span></h2>
+      <a class="site-link" href="http://localhost:55000/shared_shop/" target="_blank" rel="noopener">
+        サイトを開く →
+      </a>
+      <div class="mini-url">http://localhost:55000/shared_shop/</div>
+      <div class="launch-orbit"></div>
+    </div>
+  </div>
+  </header>
+
+  <section class="slogan-section" aria-label="P3tech team slogan">
+    <div class="slogan-board">
+      <div class="slogan-board-head">
+        <div>
+          <h2>P3techのチームスローガン</h2>
+          <p>チーム名に込めた3つの姿勢を、機能づくりとチーム運営の軸にしました。</p>
+        </div>
+        <div class="badge"><span class="badge-dot"></span>Power × Passion × Pleasant</div>
+      </div>
+      <div class="p3-grid">
+        <div class="p3-card" style="--p3-color:#ef4444;">
+          <div class="p3-label"><span></span>Power</div>
+          <small>一人ひとりが担当機能に責任を持ち、チームの力として成果につなげる。</small>
+        </div>
+        <div class="p3-card" style="--p3-color:#f97316;">
+          <div class="p3-label"><span></span>Passion</div>
+          <small>分からない部分も諦めずに調査・相談し、最後まで挑戦し続ける。</small>
+        </div>
+        <div class="p3-card" style="--p3-color:#38bdf8;">
+          <div class="p3-label"><span></span>Pleasant</div>
+          <small>相談しやすく、意見を出しやすい雰囲気を作り、楽しさも大切にする。</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <section id="features">
+      <div class="section-title">
+        <h2>実装機能紹介</h2>
+        <p>P3techとして実装した追加機能を、目的別に見やすく整理しました。カードを押すと機能に込めた思いが開きます。</p>
+      </div>
+      <p class="filter-note">カードをクリックすると、狙い・利用者への価値・チームとしての工夫を確認できます。</p>
+
+      <div class="pickup-title">
+        <span>Pick Up</span>
+        <h3>特にこだわった機能</h3>
+      </div>
+      <div class="pickup-grid">
+
+        <article class="feature-card featured-card" onclick="toggleCard(this)">
+          <div class="featured-ribbon">PICK UP</div>
+          <div class="feature-head">
+            <span class="issue-no">06</span>
+            <span class="feature-icon">🎨</span>
+          </div>
+          <h3>着せ替え機能</h3>
+          <p>購入回数や累計金額に応じて画面テーマを解放。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>ECサイトを単に商品を購入する場にとどめず、利用を重ねるほど楽しさが広がる体験にすることを目的として実装しました。購入回数や累計金額に応じてテーマを解放することで、継続利用への動機付けにつなげています。</span>
+          </div>
+        </article>
+
+        <article class="feature-card featured-card" onclick="toggleCard(this)">
+          <div class="featured-ribbon">PICK UP</div>
+          <div class="feature-head">
+            <span class="issue-no">07</span>
+            <span class="feature-icon">🎰</span>
+          </div>
+          <h3>ガチャでクーポン獲得</h3>
+          <p>ログイン時や注文完了時にランダムでクーポンを獲得。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>ゲーム要素を取り入れ、再訪問や次回購入のきっかけを作ることを目的として実装しました。ランダムでクーポンを獲得できる仕組みにより、継続的な利用を促進する体験を目指しています。</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="normal-title">
+        <span>Other Features</span>
+        <h3>その他の実装機能</h3>
+      </div>
+      <div class="feature-grid normal-grid">
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">01</span>
+            <span class="feature-icon">🔐</span>
+          </div>
+          <h3>アカウントロック機能</h3>
+          <p>ログイン失敗を検知し、不正アクセスからアカウントを守る。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>セキュリティ面の安心感を高めるために実装しました。5回連続でログインに失敗した場合に一定時間ロックすることで、利用者が安心して使えるECサイトを目指しました。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">02</span>
+            <span class="feature-icon">🛡️</span>
+          </div>
+          <h3>権限分離機能</h3>
+          <p>管理者と一般ユーザーを分離し、管理画面へのアクセスを制御。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>管理者と購入者の役割を明確に分けることで、誤操作や不正アクセスを防ぐことを目的にしました。ECサイトとして必要な安全性を意識した機能です。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">03</span>
+            <span class="feature-icon">⭐</span>
+          </div>
+          <h3>レビュー機能</h3>
+          <p>購入者が商品に評価とコメントを投稿できる。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>購入を迷っているユーザーが、実際に買った人の感想を参考にできるようにしました。購入者のみレビュー可能にすることで、信頼性のある情報提供を目指しました。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">04</span>
+            <span class="feature-icon">🎟️</span>
+          </div>
+          <h3>クーポン機能</h3>
+          <p>クーポンコードを入力すると、注文金額から割引を適用。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>お得感を作り、購入のきっかけにつなげるために実装しました。ECサイトらしい販促機能として、ユーザーの購買意欲を高めることを意識しました。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">05</span>
+            <span class="feature-icon">🕘</span>
+          </div>
+          <h3>最近見た商品</h3>
+          <p>閲覧履歴から最新の商品を表示し、再訪問しやすくする。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>一度気になった商品にすぐ戻れるようにすることで、探し直す手間を減らしました。ユーザー目線で使いやすさを高めるための機能です。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">10</span>
+            <span class="feature-icon">💬</span>
+          </div>
+          <h3>スタンプレビュー</h3>
+          <p>文章を書かなくてもスタンプでレビュー投稿できる。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>レビュー投稿のハードルを下げるために実装しました。文章を書くのが面倒なユーザーでも、気軽に商品の感想を残せるようにしています。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">11</span>
+            <span class="feature-icon">🎁</span>
+          </div>
+          <h3>ランダム商品ガチャ</h3>
+          <p>予算やカテゴリに応じてランダムに商品をおすすめ。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>福袋のような偶然の出会いを作るために実装しました。自分では選ばない商品に出会える楽しさを、ECサイトに取り入れています。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">14</span>
+            <span class="feature-icon">⏰</span>
+          </div>
+          <h3>タイムセール機能</h3>
+          <p>時間帯に応じた動的な割引価格適用、全画面通知・専用一覧・購入フローへの統合。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>セールの特別感をサイト全体で感じられるようにした機能です。時間帯に応じて価格が変わる仕組みにより、ユーザーに「今買う楽しさ」を提供し、専用一覧や購入フローへの反映まで含めて、実際のECサイトらしい購買体験を目指しました。</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="toggleCard(this)">
+          
+          <div class="feature-head">
+            <span class="issue-no">15</span>
+            <span class="feature-icon">💎</span>
+          </div>
+          <h3>ポイント機能</h3>
+          <p>商品購入の10％をポイントとして付与し、次回以降に利用可能。</p>
+          <button class="detail-toggle" type="button" tabindex="-1">込めた思いを見る</button>
+          <div class="feature-detail">
+            <b>機能に込めた思い</b>
+            <span>継続的な購入を促進するために実装しました。購入するほどポイントが貯まり、次回の買い物で使える仕組みにすることで、ユーザーにまた利用したいと思ってもらうことを目指しました。</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="section-title">
+        <h2>開発の狙い</h2>
+        <p>単に機能を増やすのではなく、ECサイトとしての価値を高める方向で整理しました。</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-card"><b>安全性</b><p>アカウントロックや権限分離により、安心して利用できる土台を強化。</p></div>
+        <div class="timeline-card"><b>購入判断</b><p>レビューやスタンプ投稿により、ユーザーが納得して購入できる情報を追加。</p></div>
+        <div class="timeline-card"><b>楽しさ</b><p>ガチャ、着せ替えなど若者向けのゲーム要素を導入。</p></div>
+        <div class="timeline-card"><b>継続利用</b><p>ポイント、クーポンで再訪問・再購入の動機を作成。</p></div>
+      </div>
+    </section>
+
+    <section id="summary">
+      <div class="summary-panel single">
+        <div class="panel">
+          <h3>P3techらしさ</h3>
+          <ul>
+            <li><b>Power：</b>担当機能を責任を持って形にする</li>
+            <li><b>Passion：</b>課題が出ても調査・相談しながら解決する</li>
+            <li><b>Pleasant：</b>楽しく使えるサイト、楽しく協力できるチームを目指す</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    P3tech Team Development Exercise / Feature Showcase
+  </footer>
+</body>
+</html>
